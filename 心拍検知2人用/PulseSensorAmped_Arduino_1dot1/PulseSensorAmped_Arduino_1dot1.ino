@@ -9,6 +9,15 @@ QS: （boolean型）心拍が見つかりBPMが更新されるときにtrue、�
 Pulse: （boolean型）心拍検出時にtrue、pin13消灯時にfalse
 */
 
+
+/******
+
+実際手つなぎシューティングで使う心拍情報は、
+1人目の心拍数 BPM1 と2人目の心拍数 BPM2
+だけになると思います。
+
+******/
+
 // ユーザ1の変数設定
 int pulsePin1 = 0;                 // 心拍センサの紫ケーブルをA0に接続
 int blinkPin1 = 13;                // パルスごとに13ピンのLEDを点灯
@@ -37,7 +46,7 @@ volatile boolean QS2 = false;        // 心拍検出時にtrue
 void setup(){
   pinMode(blinkPin1, OUTPUT);        // LED点灯用13ピン
   pinMode(fadePin1, OUTPUT);          // pin that will fade to your heartbeat!
-  pinMode(blinkPin2, OUTPUT);        // LED点灯用13ピン
+  pinMode(blinkPin2, OUTPUT);        // LED点灯用12ピン
   pinMode(fadePin2, OUTPUT);          // pin that will fade to your heartbeat!
   Serial.begin(115200);             // シリアル通信開始
   interruptSetup();                 // 2ミリ秒間隔でパルスを読み取るセットアップ
