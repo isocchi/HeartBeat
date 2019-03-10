@@ -1,3 +1,7 @@
+#include <FlexiTimer2.h>
+
+
+
 /*
 Pulse Sensor sample aquisition and processing happens in the background via Timer 2 interrupt. 2mS sample rate.
 PWM on pins 3 and 11 will not work when using this code, because we are using Timer 2!
@@ -46,6 +50,7 @@ volatile boolean Pulse2 = false;     // パルス波が高いときtrue、低い
 volatile boolean QS2 = false;        // 心拍検出時にtrue
 
 void setup(){
+//  pinMode(A0, INPUT);
   pinMode(blinkPin1, OUTPUT);        // LED点灯用13ピン
   pinMode(fadePin1, OUTPUT);          // pin that will fade to your heartbeat!
   pinMode(blinkPin2, OUTPUT);        // LED点灯用12ピン
@@ -75,7 +80,7 @@ void loop(){
     
     // QSをリセットしておく
     QS1 = false;
- }
+   }
    if (QS2 == true){
     // Set 'fadeRate' Variable to 255 to fade LED with pulse
     fadeRate2 = 255;
@@ -90,9 +95,9 @@ void loop(){
     
     // QSをリセットしておく
     QS2 = false;
- }
+   }
   
-  ledFadeToBeat();
+//  ledFadeToBeat();
   
   delay(20);
 }

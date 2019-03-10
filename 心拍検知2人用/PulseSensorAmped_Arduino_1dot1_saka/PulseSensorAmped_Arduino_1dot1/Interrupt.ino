@@ -1,7 +1,7 @@
 
 
 
-volatile int rate1[10];                    // used to hold last ten IBI values
+/*volatile int rate1[10];                    // used to hold last ten IBI values
 volatile unsigned long sampleCounter1 = 0;          // used to determine pulse timing
 volatile unsigned long lastBeatTime1 = 0;           // used to find the inter beat interval
 volatile int P1 = 512;                      // used to find peak in pulse wave
@@ -20,22 +20,24 @@ volatile int thresh2 = 512;                // used to find instant moment of hea
 volatile int amp2 = 100;                   // used to hold amplitude of pulse waveform
 volatile boolean firstBeat2 = true;        // used to seed rate array so we startup with reasonable BPM
 volatile boolean secondBeat2 = true;       // used to seed rate array so we startup with reasonable BPM
-
+*/
 
 void interruptSetup(){     
   // Initializes Timer2 to throw an interrupt every 2mS.
   // よくわからん初期設定
-  TCCR2A = 0x02;     // DISABLE PWM ON DIGITAL PINS 3 AND 11, AND GO INTO CTC MODE
-  TCCR2B = 0x06;     // DON'T FORCE COMPARE, 256 PRESCALER 
-  OCR2A = 0X7C;      // SET THE TOP OF THE COUNT TO 124 FOR 500Hz SAMPLE RATE
-  TIMSK2 = 0x02;     // ENABLE INTERRUPT ON MATCH BETWEEN TIMER2 AND OCR2A
-  sei();             // MAKE SURE GLOBAL INTERRUPTS ARE ENABLED      
+//  TCCR2A = 0x02;     // DISABLE PWM ON DIGITAL PINS 3 AND 11, AND GO INTO CTC MODE
+//  TCCR2B = 0x06;     // DON'T FORCE COMPARE, 256 PRESCALER 
+//  OCR2A = 0X7C;      // SET THE TOP OF THE COUNT TO 124 FOR 500Hz SAMPLE RATE
+//  TIMSK2 = 0x02;     // ENABLE INTERRUPT ON MATCH BETWEEN TIMER2 AND OCR2A
+//  sei();             // MAKE SURE GLOBAL INTERRUPTS ARE ENABLED
+//  FlexiTimer2::set(500,mS_interupt); // 500ms period   
 } 
 
 
 // THIS IS THE TIMER 2 INTERRUPT SERVICE ROUTINE. 
 // Timer 2 makes sure that we take a reading every 2 miliseconds
-ISR(TIMER2_COMPA_vect){                         // triggered when Timer2 counts to 124
+//ISR(TIMER2_COMPA_vect){                         // triggered when Timer2 counts to 124
+/*void mS_interupt(){
     cli();
     // disable interrupts while we do this
     // 心拍センサーの値を読み取る
@@ -185,3 +187,4 @@ if (N2 > 250){                                   // avoid high frequency noise
   
   sei();                                     // enable interrupts when youre done!
 }// end isr
+*/
